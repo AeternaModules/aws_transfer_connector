@@ -12,7 +12,7 @@ output "transfer_connectors_arn" {
 }
 output "transfer_connectors_as2_config" {
   description = "Map of as2_config values across all transfer_connectors, keyed the same as var.transfer_connectors"
-  value       = { for k, v in aws_transfer_connector.transfer_connectors : k => v.as2_config if v.as2_config != null && length(v.as2_config) > 0 }
+  value       = { for k, v in aws_transfer_connector.transfer_connectors : k => one(v.as2_config) if v.as2_config != null && length(v.as2_config) > 0 }
 }
 output "transfer_connectors_connector_id" {
   description = "Map of connector_id values across all transfer_connectors, keyed the same as var.transfer_connectors"
@@ -20,7 +20,7 @@ output "transfer_connectors_connector_id" {
 }
 output "transfer_connectors_egress_config" {
   description = "Map of egress_config values across all transfer_connectors, keyed the same as var.transfer_connectors"
-  value       = { for k, v in aws_transfer_connector.transfer_connectors : k => v.egress_config if v.egress_config != null && length(v.egress_config) > 0 }
+  value       = { for k, v in aws_transfer_connector.transfer_connectors : k => one(v.egress_config) if v.egress_config != null && length(v.egress_config) > 0 }
 }
 output "transfer_connectors_logging_role" {
   description = "Map of logging_role values across all transfer_connectors, keyed the same as var.transfer_connectors"
@@ -36,7 +36,7 @@ output "transfer_connectors_security_policy_name" {
 }
 output "transfer_connectors_sftp_config" {
   description = "Map of sftp_config values across all transfer_connectors, keyed the same as var.transfer_connectors"
-  value       = { for k, v in aws_transfer_connector.transfer_connectors : k => v.sftp_config if v.sftp_config != null && length(v.sftp_config) > 0 }
+  value       = { for k, v in aws_transfer_connector.transfer_connectors : k => one(v.sftp_config) if v.sftp_config != null && length(v.sftp_config) > 0 }
 }
 output "transfer_connectors_tags" {
   description = "Map of tags values across all transfer_connectors, keyed the same as var.transfer_connectors"
